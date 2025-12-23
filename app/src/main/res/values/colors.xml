@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- FitLife Brand Colors -->
+    <color name="fitlife_primary">#1976D2</color>
+    <color name="fitlife_primary_variant">#1565C0</color>
+    <color name="fitlife_secondary">#4CAF50</color>
+    <color name="fitlife_secondary_variant">#388E3C</color>
+    
+    <!-- Material Design 3 Color Tokens -->
+    <!-- Primary -->
+    <color name="fitlife_blue_10">#001D36</color>
+    <color name="fitlife_blue_20">#003258</color>
+    <color name="fitlife_blue_30">#004A77</color>
+    <color name="fitlife_blue_40">#1976D2</color>
+    <color name="fitlife_blue_50">#2196F3</color>
+    <color name="fitlife_blue_60">#42A5F5</color>
+    <color name="fitlife_blue_70">#64B5F6</color>
+    <color name="fitlife_blue_80">#90CAF9</color>
+    <color name="fitlife_blue_90">#BBDEFB</color>
+    <color name="fitlife_blue_95">#E3F2FD</color>
+    <color name="fitlife_blue_99">#FEFBFF</color>
+    
+    <!-- Secondary (Green) -->
+    <color name="fitlife_green_10">#002204</color>
+    <color name="fitlife_green_20">#003909</color>
+    <color name="fitlife_green_30">#00530F</color>
+    <color name="fitlife_green_40">#4CAF50</color>
+    <color name="fitlife_green_50">#66BB6A</color>
+    <color name="fitlife_green_60">#81C784</color>
+    <color name="fitlife_green_70">#A5D6A7</color>
+    <color name="fitlife_green_80">#C8E6C9</color>
+    <color name="fitlife_green_90">#E8F5E8</color>
+    <color name="fitlife_green_95">#F1F8E9</color>
+    <color name="fitlife_green_99">#FEFFFE</color>
+    
+    <!-- Tertiary (Orange) -->
+    <color name="fitlife_orange_10">#2D1600</color>
+    <color name="fitlife_orange_20">#4A2800</color>
+    <color name="fitlife_orange_30">#693C00</color>
+    <color name="fitlife_orange_40">#FF9800</color>
+    <color name="fitlife_orange_50">#FFB74D</color>
+    <color name="fitlife_orange_60">#FFCC02</color>
+    <color name="fitlife_orange_70">#FFD54F</color>
+    <color name="fitlife_orange_80">#FFE082</color>
+    <color name="fitlife_orange_90">#FFF3C4</color>
+    <color name="fitlife_orange_95">#FFFBFA</color>
+    <color name="fitlife_orange_99">#FFFBFF</color>
+    
+    <!-- Error (Red) -->
+    <color name="fitlife_red_10">#410E0B</color>
+    <color name="fitlife_red_20">#601410</color>
+    <color name="fitlife_red_30">#8C1D18</color>
+    <color name="fitlife_red_40">#F44336</color>
+    <color name="fitlife_red_50">#EF5350</color>
+    <color name="fitlife_red_60">#E57373</color>
+    <color name="fitlife_red_70">#EF9A9A</color>
+    <color name="fitlife_red_80">#FFCDD2</color>
+    <color name="fitlife_red_90">#FFEBEE</color>
+    <color name="fitlife_red_95">#FCFCFC</color>
+    <color name="fitlife_red_99">#FFFBFF</color>
+    
+    <!-- Neutral -->
+    <color name="fitlife_neutral_10">#1C1B1F</color>
+    <color name="fitlife_neutral_20">#313033</color>
+    <color name="fitlife_neutral_30">#484649</color>
+    <color name="fitlife_neutral_40">#605D62</color>
+    <color name="fitlife_neutral_50">#787579</color>
+    <color name="fitlife_neutral_60">#939094</color>
+    <color name="fitlife_neutral_70">#AEAAAE</color>
+    <color name="fitlife_neutral_80">#CAC4D0</color>
+    <color name="fitlife_neutral_90">#E6E0E9</color>
+    <color name="fitlife_neutral_95">#F4EFF4</color>
+    <color name="fitlife_neutral_99">#FFFBFE</color>
+    
+    <!-- Neutral Variant -->
+    <color name="fitlife_neutral_variant_30">#49454F</color>
+    <color name="fitlife_neutral_variant_50">#79747E</color>
+    <color name="fitlife_neutral_variant_60">#938F99</color>
+    <color name="fitlife_neutral_variant_90">#E7E0EC</color>
+    
+    <!-- Common Colors -->
+    <color name="fitlife_white">#FFFFFF</color>
+    <color name="fitlife_black">#000000</color>
+    
+    <!-- Legacy Colors for compatibility -->
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="purple_500">#FF6200EE</color>
+    <color name="purple_700">#FF3700B3</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+</resources>
