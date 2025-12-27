@@ -37,9 +37,17 @@ fun LoginScreen(
     
     // Handle login success
     LaunchedEffect(loginState) {
-        if (loginState is LoginState.Success) {
-            onLoginSuccess()
-            viewModel.clearLoginState()
+        try {
+            if (loginState is LoginState.Success) {
+                android.util.Log.d("LoginScreen", "Login success detected - calling onLoginSuccess")
+                // Small delay to ensure state is stable
+                kotlinx.coroutines.delay(100)
+                onLoginSuccess()
+                viewModel.clearLoginState()
+            }
+        } catch (e: Exception) {
+            // Log error but don't crash
+            android.util.Log.e("LoginScreen", "Error handling login success", e)
         }
     }
     
@@ -121,6 +129,7 @@ fun LoginScreen(
         Button(
             onClick = {
                 if (email.isNotBlank() && password.isNotBlank()) {
+                    android.util.Log.d("LoginScreen", "Login button clicked - email: $email")
                     viewModel.login(email.trim(), password)
                 }
             },
@@ -137,6 +146,28 @@ fun LoginScreen(
             }
         }
         
+        // Debug button to refresh login status
+        TextButton(
+            onClick = {
+                android.util.Log.d("LoginScreen", "Manual refresh button clicked")
+                viewModel.refreshLoginStatus()
+            },
+            enabled = loginState !is LoginState.Loading
+        ) {
+            Text("🔄 Debug: Refresh Status")
+        }
+        
+        // Debug button to test navigation callback
+        TextButton(
+            onClick = {
+                android.util.Log.d("LoginScreen", "Test navigation button clicked")
+                onLoginSuccess()
+            },
+            enabled = loginState !is LoginState.Loading
+        ) {
+            Text("🧪 Test Navigation")
+        }
+        
         // Error Message
         if (loginState is LoginState.Error) {
             Spacer(modifier = Modifier.height(16.dp))
@@ -146,7 +177,7 @@ fun LoginScreen(
                 )
             ) {
                 Text(
-                    text = loginState.message,
+                    text = (loginState as LoginState.Error).message,
                     modifier = Modifier.padding(16.dp),
                     color = MaterialTheme.colorScheme.onErrorContainer,
                     style = MaterialTheme.typography.bodyMedium

@@ -14,10 +14,14 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.hilt.navigation.compose.hiltViewModel
+import com.fitlife.android.viewmodel.AuthViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun ProfileScreen() {
+fun ProfileScreen(
+    authViewModel: AuthViewModel = hiltViewModel()
+) {
     LazyColumn(
         modifier = Modifier
             .fillMaxSize()
@@ -46,7 +50,7 @@ fun ProfileScreen() {
         
         item {
             // Opciones del perfil
-            ProfileOptions()
+            ProfileOptions(authViewModel = authViewModel)
         }
     }
 }
@@ -369,7 +373,7 @@ fun SettingItem(
 }
 
 @Composable
-fun ProfileOptions() {
+fun ProfileOptions(authViewModel: AuthViewModel) {
     Card(
         modifier = Modifier.fillMaxWidth()
     ) {
@@ -456,7 +460,9 @@ fun ProfileOptions() {
             
             // Cerrar sesión
             OutlinedButton(
-                onClick = { /* Cerrar sesión */ },
+                onClick = { 
+                    authViewModel.logout()
+                },
                 modifier = Modifier.fillMaxWidth(),
                 colors = ButtonDefaults.outlinedButtonColors(
                     contentColor = Color(0xFFF44336)

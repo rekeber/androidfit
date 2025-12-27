@@ -23,6 +23,7 @@ import dagger.hilt.android.AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        android.util.Log.d("MainActivity", "=== FitLife App Starting ===")
         enableEdgeToEdge()
         setContent {
             FitLifeTheme {
@@ -39,9 +40,11 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun FitLifeApp() {
+    android.util.Log.d("MainActivity", "FitLifeApp composable starting")
     val navController = rememberNavController()
     val authViewModel: AuthViewModel = hiltViewModel()
     
+    android.util.Log.d("MainActivity", "About to call FitLifeNavigation")
     FitLifeNavigation(
         navController = navController,
         authViewModel = authViewModel

@@ -45,9 +45,15 @@ fun RegisterScreen(
     
     // Handle register success
     LaunchedEffect(registerState) {
-        if (registerState is RegisterState.Success) {
-            onRegisterSuccess()
-            viewModel.clearRegisterState()
+        try {
+            if (registerState is RegisterState.Success) {
+                android.util.Log.d("RegisterScreen", "Register success detected - calling onRegisterSuccess")
+                onRegisterSuccess()
+                viewModel.clearRegisterState()
+            }
+        } catch (e: Exception) {
+            // Log error but don't crash
+            android.util.Log.e("RegisterScreen", "Error handling register success", e)
         }
     }
     
@@ -404,7 +410,7 @@ fun RegisterScreen(
                 )
             ) {
                 Text(
-                    text = registerState.message,
+                    text = (registerState as RegisterState.Error).message,
                     modifier = Modifier.padding(16.dp),
                     color = MaterialTheme.colorScheme.onErrorContainer,
                     style = MaterialTheme.typography.bodyMedium

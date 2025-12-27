@@ -29,13 +29,22 @@ class TokenManager(context: Context) {
     }
     
     fun saveTokens(accessToken: String, refreshToken: String, expiresIn: Long) {
-        val expiryTime = System.currentTimeMillis() + (expiresIn * 1000)
-        
-        sharedPreferences.edit()
-            .putString(ACCESS_TOKEN_KEY, accessToken)
-            .putString(REFRESH_TOKEN_KEY, refreshToken)
-            .putLong(TOKEN_EXPIRY_KEY, expiryTime)
-            .apply()
+        try {
+            val expiryTime = System.currentTimeMillis() + (expiresIn * 1000)
+            
+            android.util.Log.d("TokenManager", "Saving tokens, expires in: $expiresIn seconds")
+            
+            sharedPreferences.edit()
+                .putString(ACCESS_TOKEN_KEY, accessToken)
+                .putString(REFRESH_TOKEN_KEY, refreshToken)
+                .putLong(TOKEN_EXPIRY_KEY, expiryTime)
+                .apply()
+                
+            android.util.Log.d("TokenManager", "Tokens saved successfully")
+        } catch (e: Exception) {
+            android.util.Log.e("TokenManager", "Error saving tokens", e)
+            throw e
+        }
     }
     
     fun getAccessToken(): String? {
@@ -59,11 +68,20 @@ class TokenManager(context: Context) {
     }
     
     fun saveUserInfo(userId: Long, email: String, name: String) {
-        sharedPreferences.edit()
-            .putLong(USER_ID_KEY, userId)
-            .putString(USER_EMAIL_KEY, email)
-            .putString(USER_NAME_KEY, name)
-            .apply()
+        try {
+            android.util.Log.d("TokenManager", "Saving user info: $email")
+            
+            sharedPreferences.edit()
+                .putLong(USER_ID_KEY, userId)
+                .putString(USER_EMAIL_KEY, email)
+                .putString(USER_NAME_KEY, name)
+                .apply()
+                
+            android.util.Log.d("TokenManager", "User info saved successfully")
+        } catch (e: Exception) {
+            android.util.Log.e("TokenManager", "Error saving user info", e)
+            throw e
+        }
     }
     
     fun getUserId(): Long {
@@ -79,17 +97,37 @@ class TokenManager(context: Context) {
     }
     
     fun clearTokens() {
-        sharedPreferences.edit()
-            .remove(ACCESS_TOKEN_KEY)
-            .remove(REFRESH_TOKEN_KEY)
-            .remove(TOKEN_EXPIRY_KEY)
-            .remove(USER_ID_KEY)
-            .remove(USER_EMAIL_KEY)
-            .remove(USER_NAME_KEY)
-            .apply()
+        try {
+            android.util.Log.d("TokenManager", "Clearing all tokens and user info")
+            
+            sharedPreferences.edit()
+                .remove(ACCESS_TOKEN_KEY)
+                .remove(REFRESH_TOKEN_KEY)
+                .remove(TOKEN_EXPIRY_KEY)
+                .remove(USER_ID_KEY)
+                .remove(USER_EMAIL_KEY)
+                .remove(USER_NAME_KEY)
+                .apply()
+                
+            android.util.Log.d("TokenManager", "All tokens and user info cleared successfully")
+        } catch (e: Exception) {
+            android.util.Log.e("TokenManager", "Error clearing tokens", e)
+            throw e
+        }
     }
     
     fun isLoggedIn(): Boolean {
-        return getAccessToken() != null && isTokenValid()
+        val result = getAccessToken() != null && isTokenValid()
+        android.util.Log.d("TokenManager", "isLoggedIn check - result: $result")
+        android.util.Log.d("TokenManager", "Access token exists: ${getAccessToken() != null}")
+        android.util.Log.d("TokenManager", "Token is valid: ${isTokenValid()}")
+        
+        // Additional debugging info
+        val expiryTime = sharedPreferences.getLong(TOKEN_EXPIRY_KEY, 0)
+        val currentTime = System.currentTimeMillis()
+        android.util.Log.d("TokenManager", "Token expiry: $expiryTime, Current time: $currentTime")
+        android.util.Log.d("TokenManager", "Time until expiry: ${expiryTime - currentTime}ms")
+        
+        return result
     }
 }
