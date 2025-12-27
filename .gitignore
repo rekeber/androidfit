@@ -1,0 +1,76 @@
+# ===================================
+# ANDROID NATIVE - GITIGNORE
+# ===================================
+
+# ===== GRADLE =====
+.gradle/
+build/
+/captures
+.externalNativeBuild/
+.cxx/
+*.ap_
+*.aab
+
+# ===== LOCAL CONFIGURATION =====
+local.properties
+gradle.properties
+keystore.properties
+
+# ===== ANDROID STUDIO =====
+.idea/
+*.iml
+.navigation/
+captures/
+output.json
+
+# ===== GENERATED FILES =====
+gen/
+out/
+release/
+debug/
+
+# ===== LOGS =====
+*.log
+
+# ===== KEYSTORE =====
+*.keystore
+*.jks
+key.properties
+
+# ===== PROGUARD =====
+proguard/
+
+# ===== LINT =====
+lint/intermediates/
+lint/generated/
+lint/outputs/
+lint/tmp/
+
+# ===== GRADLE WRAPPER =====
+gradle/wrapper/gradle-wrapper.jar
+
+# ===== FREELINE =====
+freeline.py
+freeline/
+freeline_project_description.json
+
+# ===== FASTLANE =====
+fastlane/report.xml
+fastlane/Preview.html
+fastlane/screenshots
+fastlane/test_output
+fastlane/readme.md
+
+# ===== SISTEMA =====
+.DS_Store
+Thumbs.db
+*.tmp
+*.temp
+*.swp
+*.swo
+*~
+
+# ===== ARCHIVOS GRANDES =====
+*.hprof
+*.zip
+*.tar.gz
